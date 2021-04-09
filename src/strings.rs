@@ -1,3 +1,4 @@
+#[allow(unused_variables)] 
 pub fn strings() {
 
     // String slices (byte array) on stack 
