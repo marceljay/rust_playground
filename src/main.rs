@@ -5,11 +5,18 @@ use std::io; // not in the prelude
 mod functions;
 mod collections;
 
+// non-sensical function that returns two values. usize for needed because lenght unknown?
+// Rust is pass-by-value, which is why the &ampersand is needed
+fn greeter(name: &str) -> (&str, usize) {
+    println!("Welcome to my rust playground");
+
+    (name, name.len())
+}
+
 #[allow(unused_variables)] 
-
-
 fn main() {
 
+    println!("Hello {:?}", greeter("Marcel"));
     collections::run();
 
     // Closures - access to variables outside function
