@@ -5,6 +5,7 @@ use std::io; // not in the prelude
 mod structs;
 mod collections;
 mod strings;
+mod ownership;
 
 // non-sensical function that returns two values. 
 // string slice and usize needed because lenght unknown?
@@ -19,7 +20,11 @@ fn main() {
 
     println!("Hello {:?}", greeter("Marcel"));
     // collections::run();
-    structs::run();
+    // structs::run();
+    // strings::run();
+    // collections::run();
+    ownership::run();
+
 
 
     // let mut num = 5;
@@ -34,8 +39,6 @@ fn main() {
     // println!("\nvar_a {} \nvar_b {}\n", var_a, var_b);
     // var_b.push('A');
     // var_a = "fsdfsdfsdf";
-
-
 
 
     // let mut choice = String::new();

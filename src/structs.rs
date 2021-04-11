@@ -24,6 +24,7 @@ impl Person {
         self.age = new_age;
     }
 
+    // Requires ampersand even though nothing changed
     fn get_name(&self) -> String {
         // Cannot return without format
         format!("{}", self.name)
@@ -36,7 +37,8 @@ impl Person {
 
 
 pub fn run() {
-
+    println!("module structs: run() called");
+    
     let mut p = Person {
         age: 18,
         name: "Jane".to_string()

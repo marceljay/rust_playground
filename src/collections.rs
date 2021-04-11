@@ -5,15 +5,21 @@
 // Vectors, Strings and Hashmaps are collections
 // Data these collections point to is stored on the heap
 
+pub fn printvec(vec: Vec<u16>) -> String {
+    format!("{:?}", vec)
+}
+
+#[allow(unused_variables)] 
 pub fn run() {
 
+    println!("module collections: run() called");
     // Array: Fixed list (size), all elements same type
     // - All stack allocated (thus no push/pop)
     let num_array: [i32; 4] = [1,2,3,4];
 
     let slice: &[i32] = &num_array[3..4];
 
-    println!("{:?}", slice);
+    println!("&num_array[3..4]: {:?}", slice);
 
 
     // Tuple of &str slice and integer
@@ -25,10 +31,13 @@ pub fn run() {
 
     // Creating a vector with the macro "vec!"
     let mut v: Vec<u16> = vec![1,2,3,4,5];
+    // pushing to vector 
     v.push(1337);
-    println!("{:?}", v);
+    let vec2 = &v;
 
-
+    println!("{}", printvec(v));
+    // This would not compile: mismatched types
+    // printvec(vec2);
 
 
 }
