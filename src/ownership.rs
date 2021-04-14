@@ -1,6 +1,14 @@
 // Ownsership 
+#[allow(unused_variables)] 
 
 pub fn run() {
+
+    // let b;
+    // // Inner scope?
+    // {
+    //     let a;
+    //     a = b;
+    // }
 
     // Creating a vector with the macro "vec!"
     let v: Vec<u16> = vec![1,2,3,4,5];
@@ -12,10 +20,16 @@ pub fn run() {
     // println!("{:?}", (v, vec2));
 
     let v: Vec<u16> = vec![1,2,3,4,5];
-    let vec2: Vec<u16> = vec![0,0,0];
     let vec2 = &v;
     println!("{:?} {:?}", v, vec2);
-    println!("{:?}", (&v, vec2));
+    // ERROR: The tuple cannot consume the original and borrowed data at the same time
+    // println!("{:?}", (v, vec2));
+    
+    let v: Vec<u16> = vec![1,2,3,4,5];
+    let vec2 = &v;
+    println!("{:?}", (v, 0));
+    // ERROR: later borrow occurs in the following statement
+    // println!("{:?}", vec2);
 
 
     let v: Vec<u16> = vec![1,2,3,4,5];
@@ -23,7 +37,8 @@ pub fn run() {
 
     // The vectors are passed into a tuple, which consumes the data (move)
     println!("{:?}", (v, vec2));
-    println!("{:?}", (v, vec2));
+    // ERROR: already moved, consumed by tuples
+    // println!("{:?}", (v, vec2));
 
     let v: Vec<u16> = vec![1,2,3,4,5];
     let vec2: Vec<u16> = vec![0,0,0];

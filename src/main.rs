@@ -6,6 +6,7 @@ mod structs;
 mod collections;
 mod strings;
 mod ownership;
+mod enums;
 
 // non-sensical function that returns two values. 
 // string slice and usize needed because lenght unknown?
@@ -23,7 +24,9 @@ fn main() {
     // structs::run();
     // strings::run();
     // collections::run();
-    ownership::run();
+    // ownership::run();
+    enums::run();
+
 
 
 
