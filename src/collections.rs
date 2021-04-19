@@ -3,7 +3,7 @@
 // Compound types are stored on the stack
 
 // Vectors, Strings and Hashmaps are collections
-// Data these collections point to is stored on the heap
+// Data these collections point to is stored on the heap as they can grow in size
 
 pub fn printvec(vec: Vec<u16>) -> String {
     format!("{:?}", vec)

@@ -24,8 +24,10 @@ pub fn run() {
 
 
     let int = 1338;
+    let int2 = 7;
     let ref_from_fn = get_ref(&int);
     println!("{}", ref_from_fn);
+    get_ref_3(&int, &int2);
 
 }
 
@@ -35,7 +37,24 @@ pub fn get_ref<'a>(param: &'a u16) -> &'a u16 {
     param
 }
 
-
-pub fn get_ref_2<'a, 'scnd>(param: &'a u16, param2: &'scnd usize) -> (&'a u16, &'scnd usize) {
+// each param can have their own lifetime (but does not need to)
+pub fn get_ref_2<'a, 'b>(param: &'a u16, param2: &'b usize) -> (&'a u16, &'b usize) {
     (param, param2)
+}
+
+// multiple lifetimes defined, not used, throws no error
+pub fn get_ref_3<'a, 'b, 'c>(param: &'a u16, param2: &u32) -> u16 {
+    println!("{} {}", param, param2); 
+    return 1337
+}
+
+
+// Both params have the same lifetime
+pub fn get_ref_4<'a>(param: &'a u16, param2: &'a u16) -> &'a u16 {
+    if param > param2 {
+        param
+    }
+    else {
+        param2
+    }
 }
