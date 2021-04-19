@@ -1,7 +1,5 @@
 // Enums or enumerations are another custom data type in rust
-
-// Example here is basically taken from the rust book/docs
-
+// Example here is based on the rust book/docs
 // In rust each enum variant can have data to go along with it.
 
 
@@ -31,7 +29,8 @@ fn inspect(event: WebEvent) {
     match event {
         WebEvent::PageLoad => println!("page loaded"),
         WebEvent::PageUnload => println!("page unloaded"),
-        // Destructure `c` from inside the `enum`.
+
+        // Destructure `var` from inside the `enum`.
         WebEvent::KeyPress(c) => println!("pressed '{}'.", c),
         WebEvent::SmallNumba(n) => println!("passed number '{}'.", n),
         WebEvent::Paste(s) => println!("pasted \"{}\".", s),

@@ -7,6 +7,7 @@ mod collections;
 mod strings;
 mod ownership;
 mod enums;
+mod lifetimes;
 
 // non-sensical function that returns two values. 
 // string slice and usize needed because lenght unknown?
@@ -25,7 +26,9 @@ fn main() {
     // strings::run();
     // collections::run();
     // ownership::run();
-    enums::run();
+    // enums::run();
+    lifetimes::run();
+
 
 
 
