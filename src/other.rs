@@ -1,5 +1,5 @@
 pub fn run() {
-    println!("module other: run() called");
+    println!("\nmodule other: run() called");
 
     // For loops
     let end = 2;

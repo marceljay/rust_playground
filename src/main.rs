@@ -1,4 +1,4 @@
-#![allow(dead_code)]  // crate level attribute, because of hash (#) AND bang (!)
+#![allow(dead_code)]  // CRATE level attribute, because of hash (#) AND bang (!)
 
 use std::io; // not in the prelude
 
@@ -17,21 +17,17 @@ fn greeter(name: &str) -> (&str, usize) {
     (name, name.len())
 }
 
-#[allow(unused_variables)] 
+#[allow(unused_variables)]  // following scope level attribute
 fn main() {
 
     println!("Hello {:?}", greeter("Marcel"));
     // collections::run();
-    // structs::run();
+    structs::run();
     // strings::run();
     // collections::run();
     // ownership::run();
     // enums::run();
     lifetimes::run();
-
-
-
-
 
     // let mut num = 5;
     // let r1 = &num as *const i32;

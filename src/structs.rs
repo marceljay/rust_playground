@@ -1,17 +1,21 @@
 // Structs can be used to create custom data types
+// There are regular structs and tuple structs with unnamed fields
 
-// Regular struct
+// must be located in a sub-folder
+mod other_struct;
+
+// Regular Struct
 struct Person {
     age: u8,
     name: String
     // name: &str, // needs lifetime?
 }
 
-// Tuple struct - unnamed fields
+// Tuple Struct - unnamed fields
 struct Numbers(u8, u16, usize);
 
 // impl keyword is primarily used to define implementations on types
-// e.g. member functions
+// e.g. member functions of a Struct
 impl Person {
 
     // Works with or without ampersand, so reference only needed for heap data?
@@ -33,15 +37,28 @@ impl Person {
         // self.name.clone()    // works
     }
 
+
+
 }
 
-
+#[allow(unused_variables)] 
 pub fn run() {
-    println!("module structs: run() called");
+    println!("\nmodule structs: run() called \n---------");
+
+    let other = other_struct::NotAccessible {
+        a_bool: true,
+        b_int: 1337,
+    };
     
     let mut p = Person {
         age: 18,
         name: "Jane".to_string()
+    };
+
+    // cloning variables with the .. notation
+    let clone = Person {
+        name: "Jane (clone)".to_string(),
+        ..p 
     };
 
     p.change_age(19);

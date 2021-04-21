@@ -2,7 +2,7 @@
 #[allow(unused_variables)] 
 
 pub fn run() {
-    println!("module lifetimes: run() called \n---------");
+    println!("\nmodule lifetimes: run() called \n---------");
 
     // Scope basic example
     let x;
@@ -20,8 +20,6 @@ pub fn run() {
     //     let i = 20;
     //     return &i;
     // }
-
-
 
     let int = 1338;
     let int2 = 7;
