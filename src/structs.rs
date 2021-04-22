@@ -15,7 +15,9 @@ struct Person {
 struct Numbers(u8, u16, usize);
 
 // impl keyword is primarily used to define implementations on types
-// e.g. member functions of a Struct
+// e.g. Methods, member functions of a Struct
+// According to Rust book:
+// "their first parameter is always self, which represents the instance of the struct the method is being called on"
 impl Person {
 
     // Works with or without ampersand, so reference only needed for heap data?
@@ -33,7 +35,7 @@ impl Person {
         // Cannot return without format
         format!("{}", self.name)
 
-        // self.name            // does not work
+        // self.name            // does not work as return statement
         // self.name.clone()    // works
     }
 

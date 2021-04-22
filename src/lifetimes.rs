@@ -4,11 +4,25 @@
 pub fn run() {
     println!("\nmodule lifetimes: run() called \n---------");
 
-    // Scope basic example
+    // Declare a variable binding (Declare first)
     let x;
 
+    let shadowed_binding = 1;
+    let outside_binding = "I'm Outside";
+
+
+
+    // This is a block, and has a smaller scope than the run() function
     {       
-        let y = 1; // Inner scope
+        // Inner scope: This binding only exists in this block
+        let y = 1;
+        
+        // This binding *shadows* the outer one
+        let shadowed_binding = "abc";
+
+        println!("{}, but I can be accessed from inside a sub-block", outside_binding);
+
+        // Initialize the binding
         x = &y;
         println!("var x printed from inside scope: {}", x); 
     }
