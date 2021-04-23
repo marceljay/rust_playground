@@ -20,7 +20,7 @@ struct Numbers(u8, u16, usize);
 // "their first parameter is always self, which represents the instance of the struct the method is being called on"
 impl Person {
 
-    // Works with or without ampersand, so reference only needed for heap data?
+    // Works with or without ampersand, so reference only needed for heap data?N
     fn get_age(self) -> u8 {
         self.age
     }
@@ -47,7 +47,8 @@ impl Person {
 pub fn run() {
     println!("\nmodule structs: run() called \n---------");
 
-    let other = other_struct::NotAccessible {
+    // Requires path separator (::) for access
+    let other = other_struct::Accessible {
         a_bool: true,
         b_int: 1337,
     };

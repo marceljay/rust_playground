@@ -24,27 +24,43 @@ fn compare<T: std::cmp::PartialOrd>(param: &[T]) -> &T {
     }
 }
 
+// using the <> syntax we can define fields with generic types
+struct Point<T> {
+    x: T,
+    y: T,
+    z: u8,
+}
+
+// Writing methods for generic structs
+impl<T> Point<T> {
+    fn values(&self) -> (&T, u8) {
+        (&self.x, self.z)
+    }
+}
+
 #[allow(unused_variables)] 
 pub fn run() {
     println!("\nmodule generics: run() called \n---------");
-
-
     
     let number_list = vec![34, 50, 25, 100, 65];
+    println!("{:?}", compare(&number_list));
+    let char_list = vec!['a', 'c', 'x', 'q'];
+    println!("{:?}", compare(&char_list));
+    let bool_list = vec![true, false, true, true];
+    println!("{:?}", compare(&bool_list));
+    let string_list = vec!["ahello", "canIdoThis"];
+    println!("{:?}", compare(&string_list));
 
     let x = 12u32;
 
     let cond: bool = true;
 
-    // using the <> syntax we can define fields with generic types
-    struct Point<T> {
-        x: T,
-        y: T,
-        z: u8,
-    }
+
     
-    let integer = Point { x: 5, y: 10, z: 1};
+    let p = Point { x: 5, y: 10, z: 1};
     let float = Point { x: 1.337, y: 4.0, z: 0 };
+
+    println!("x and z = {:?}", p.values());
 
     // two different generic types in one struct
     struct Some<T,V> {

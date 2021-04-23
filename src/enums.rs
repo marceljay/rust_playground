@@ -4,7 +4,7 @@
 
 
 enum WebEvent {
-    // Basic variants 
+    // Basic variants (are like exist vs. non-exist, on/off)
     PageLoad,
     PageUnload,
     // Variants that hold data
@@ -42,7 +42,8 @@ fn inspect(event: WebEvent) {
 }
 
 pub fn run() {
-    println!("module enums: run() called");
+    println!("module enums: run() called \n---------");
+
 
     let pressed = WebEvent::KeyPress('x');
     // `to_owned()` creates an owned `String` from a string slice.

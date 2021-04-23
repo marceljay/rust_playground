@@ -28,7 +28,6 @@ pub fn run() {
     println!("{:?}", x);
         
 
-
     // Creating a vector with the macro "vec!"
     let mut v: Vec<u16> = vec![1,2,3,4,5];
     // pushing to vector 

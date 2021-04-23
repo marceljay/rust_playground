@@ -1,6 +1,10 @@
 
+pub struct Accessible {
+    pub a_bool: bool,
+    pub b_int: u16,
+}
 
-pub struct NotAccessible {
+struct NotAccessible {
     pub a_bool: bool,
     pub b_int: u16,
 }
