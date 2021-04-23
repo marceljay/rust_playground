@@ -30,6 +30,7 @@ fn main() {
     // ownership::run();
     // enums::run();
     lifetimes::run();
+    generics::run();
 
     // let mut num = 5;
     // let r1 = &num as *const i32;

@@ -1,4 +1,5 @@
 // Lifetimes 
+// Examples here to explain shadowing, scope and lifetimes
 #[allow(unused_variables)] 
 
 pub fn run() {
@@ -9,7 +10,6 @@ pub fn run() {
 
     let shadowed_binding = 1;
     let outside_binding = "I'm Outside";
-
 
 
     // This is a block, and has a smaller scope than the run() function
