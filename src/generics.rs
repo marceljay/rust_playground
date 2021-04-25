@@ -31,10 +31,18 @@ struct Point<T> {
     z: u8,
 }
 
-// Writing methods for generic structs
+// Implementation of methods on the type Point<T>
+// T must be declared right after impl keyword
 impl<T> Point<T> {
     fn values(&self) -> (&T, u8) {
         (&self.x, self.z)
+    }
+}
+
+// Does not require <T> declaration
+impl Point<f32> {
+    fn distance_from_origin(&self) -> f32 {
+        (self.x.powi(2) + self.y.powi(2)).sqrt()
     }
 }
 
@@ -51,16 +59,19 @@ pub fn run() {
     let string_list = vec!["ahello", "canIdoThis"];
     println!("{:?}", compare(&string_list));
 
+    // Number literal with type suffix
     let x = 12u32;
-
-    let cond: bool = true;
-
-
-    
+ 
     let p = Point { x: 5, y: 10, z: 1};
     let float = Point { x: 1.337, y: 4.0, z: 0 };
 
     println!("x and z = {:?}", p.values());
+
+    // ERROR: Instance of Point<T> is not f32, so it does not have this method
+    // println!("x and z = {:?}", p.distance_from_origin());
+
+    println!("x and z = {:?}", float.distance_from_origin());
+
 
     // two different generic types in one struct
     struct Some<T,V> {
@@ -69,7 +80,10 @@ pub fn run() {
     }
     
     let gen = Some { var: 1.337, msg: "hello".to_string() };
-    println!("gen.msg: {}", gen.msg )
+    println!("gen.msg: {}", gen.msg );
+
+    let integer = Some(5);
+    println!("Some {:?}", integer );
 
 
 }
