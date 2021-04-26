@@ -1,6 +1,7 @@
 // Enums or enumerations are another custom data type in rust
 // Example here is based on the rust book/docs
 // In rust each enum variant can have data to go along with it.
+#![allow(unused_variables)] 
 
 
 // An empty enum
@@ -62,6 +63,12 @@ pub fn run() {
     inspect(unload);
     inspect(numba);
 
+
+    let some_number = Option2::Some(5);
+    let some_string = Option2::Some("a string");
+    // ERROR: Because Enum variant could be dependent
+    // let absent_number = Option2::JustNothing;
+
 }
 
 // An example from the Rust book. 
@@ -76,4 +83,15 @@ enum IpAddrKind {
 struct IpAddr {
     kind: IpAddrKind,
     address: String,
-}s9
+}
+
+
+// Everywhere that a value has a type that isn’t an Option<T>, 
+// you can safely assume that the value isn’t null. 
+// This was a deliberate design decision for Rust to limit null’s pervasiveness  
+// increase the safety of Rust code.
+
+enum Option2<T> {
+    Some(T),
+    JustNothing,
+}

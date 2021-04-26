@@ -39,6 +39,7 @@ impl<T> Point<T> {
     }
 }
 
+// Implementation for type Point<f32> (other types will not have these)
 // Does not require <T> declaration
 impl Point<f32> {
     fn distance_from_origin(&self) -> f32 {
@@ -65,6 +66,7 @@ pub fn run() {
     let p = Point { x: 5, y: 10, z: 1};
     let float = Point { x: 1.337, y: 4.0, z: 0 };
 
+    // Calls
     println!("x and z = {:?}", p.values());
 
     // ERROR: Instance of Point<T> is not f32, so it does not have this method

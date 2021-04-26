@@ -9,6 +9,7 @@ mod ownership;
 mod enums;
 mod lifetimes;
 mod generics;
+mod macros;
 
 
 // non-sensical function that returns two values. 
@@ -31,6 +32,7 @@ fn main() {
     // enums::run();
     lifetimes::run();
     generics::run();
+    macros::run();
 
     // let mut num = 5;
     // let r1 = &num as *const i32;
