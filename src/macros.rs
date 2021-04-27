@@ -1,3 +1,6 @@
+#![allow(unused_macros)] 
+use proc_macro;
+
 // Macros
 // Metaprogramming: macros are a way of writing code that writes other code
 // can be used for variadic functions (like println!())
@@ -11,8 +14,7 @@ macro_rules! macro_name {
         println!("Macros are cool.")
     };
 }
-
-#[allow(unused_macros)] 
+ 
 #[macro_export] // makes it available whenever the crate is brought into scope
 macro_rules! expr_macro {
         // Syntax similar to a Rust match expression, this macro has multiple arms
@@ -30,11 +32,35 @@ macro_rules! expr_macro {
         // $e:expr matches any expression, $e is the expression's name
 }
 
+
+use std::collections::HashMap;
+
+
+macro_rules! new_hashmap {
+
+    ($($key:expr => $val:expr),*) => {
+
+        {
+            let mut map = HashMap::new();
+            
+            $(
+                map.insert($key, $val);
+            )*
+            
+         map
+        
+        }
+    };
+
+} 
+
 // Procedural Macros (sort of like a mapping on input code)
 // All procedural macros work in a similar fashion.
 // The types are: custom derive, attribute-like, and function-like
 // Example: 
 // #[some_attribute]
+
+
 
 #[allow(unused_variables)] 
 pub fn run() {
@@ -50,6 +76,8 @@ pub fn run() {
     expr_macro!(token q(-_-)p false);
     expr_macro!(let numba: u32 = 5);
 
-    
+    let m_str = new_hashmap!["one" => 1, "two" => 2];
+    let m_hex = new_hashmap![0x12 => 12, 0xab => 23];
+
 
 }
