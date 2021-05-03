@@ -3,6 +3,7 @@
 
 // must be located in a sub-folder
 mod other_struct;
+use other_struct::NameTrait;
 
 // Regular Struct
 struct Person {
@@ -42,7 +43,8 @@ impl Person {
 }
 
 
-// traits share similarities with interfaces in other languages
+// Traits share similarities with interfaces in other languages
+// Likewise, traits define method signatures
 pub trait BasicInfo {
     fn summarize(&self) -> String;
 }
@@ -53,6 +55,14 @@ impl BasicInfo for Person {
         format!("Summary:\n name: {}, age: {}", self.name, self.age)
     }
 }
+
+// implementation for a trait from another library/module
+impl NameTrait for Person {
+    fn my_name_is(&self) -> String {
+        format!("My name is: {}", self.name)
+    }
+}
+
 
 
 #[allow(unused_variables)] 
@@ -82,6 +92,7 @@ pub fn run() {
 
     println!("Getting name: {}", p.get_name());
     println!(" {}", p.summarize());
+    println!(" {}", p.my_name_is());
     println!("Getting age {}", p.get_age());
 
 
