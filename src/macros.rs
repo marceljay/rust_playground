@@ -27,8 +27,6 @@ macro_rules! expr_macro {
 
         ($st:stmt) => {$st};
 
-
-
         // $e:expr matches any expression, $e is the expression's name
 }
 
@@ -38,6 +36,10 @@ use std::collections::HashMap;
 
 macro_rules! new_hashmap {
 
+    // The asterisk * indicates that the value passed could repeat 
+    // the $() is required to wrap the part for "copying"
+    // no comma would mean SPACE is the delimiter after token
+    // + sign instead of * requires expression to appear at least once
     ($($key:expr => $val:expr),*) => {
 
         {

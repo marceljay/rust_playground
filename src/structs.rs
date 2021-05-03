@@ -20,7 +20,7 @@ struct Numbers(u8, u16, usize);
 // "their first parameter is always self, which represents the instance of the struct the method is being called on"
 impl Person {
 
-    // Works with or without ampersand, so reference only needed for heap data?N
+    // Works with or without ampersand, but without means value is consumed.
     fn get_age(self) -> u8 {
         self.age
     }
@@ -39,9 +39,21 @@ impl Person {
         // self.name.clone()    // works
     }
 
-
-
 }
+
+
+// traits share similarities with interfaces in other languages
+pub trait BasicInfo {
+    fn summarize(&self) -> String;
+}
+
+// implementation for a trait
+impl BasicInfo for Person {
+    fn summarize(&self) -> String {
+        format!("Summary:\n name: {}, age: {}", self.name, self.age)
+    }
+}
+
 
 #[allow(unused_variables)] 
 pub fn run() {
@@ -69,6 +81,7 @@ pub fn run() {
     println!("Person {} {}", p.age, p.name);
 
     println!("Getting name: {}", p.get_name());
+    println!(" {}", p.summarize());
     println!("Getting age {}", p.get_age());
 
 
