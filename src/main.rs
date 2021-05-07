@@ -1,6 +1,6 @@
 #![allow(dead_code)]  // CRATE level attribute, because of hash (#) AND bang (!)
 
-use std::io; // not in the prelude
+// use std::io; // not in the prelude
 
 // Modules section
 // Example: 
@@ -15,6 +15,7 @@ mod lifetimes;
 mod generics;
 mod macros;
 mod proc_macro;
+mod other;
 
 // non-sensical function that returns two values. 
 // string slice and usize needed because lenght unknown?
@@ -38,6 +39,8 @@ fn main() {
     generics::run();
     macros::run();
     proc_macro::run();
+    other::run();
+   
 
     // let mut num = 5;
     // let r1 = &num as *const i32;

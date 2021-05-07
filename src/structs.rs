@@ -61,7 +61,7 @@ impl Person {
 
 // Traits share similarities with interfaces in other languages
 // Likewise, traits define method signatures
-pub trait BasicInfo {
+trait BasicInfo {
     fn summarize(&self) -> String;
 }
 
@@ -73,20 +73,30 @@ impl BasicInfo for Person {
 }
 
 // implementation for a trait from another library/module
+// made available
 impl NameTrait for Person {
     fn my_name_is(&self) -> String {
         format!("My name is: {}", self.name)
     }
 }
 
+// Sub-Traits / Trait inheritance
+// Requieres that implementing type needs to implement super-trait as well 
+trait SubTrait: other_trait::SuperTrait {
+    fn summarize(&self) -> String;
+}
 
-// ERROR: This would not work bc trait AND type are external
-impl other_trait::BoolTrait for other_struct::Accessible {
+impl SubTrait for Person {
+    fn summarize(&self) -> String {
+        format!("Summary:\n name: {}, age: {}", self.name, self.age)
+    }    
+}
+
+impl other_trait::SuperTrait for Person {
     fn am_i_right(&self) -> bool {
        true
     }
 }
-
 
 
 #[allow(unused_variables)] 

@@ -13,3 +13,10 @@ I'm learning from various sources such as the Rust book and helpful Youtube vide
 `cargo run`
 
 The code should generally run without errors, as I out-comment faulty code.
+
+## Resources
+
+- [Rustic Introduction into Substrate Framework - Syntax and Design Patterns](https://waszczyk.com/rustic-introduction-into-substrate-framework-syntax-and-design-patterns)
+
+- [Turbofish]
+https://techblog.tonsser.com/posts/what-is-rusts-turbofish
