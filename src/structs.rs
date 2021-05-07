@@ -4,12 +4,24 @@
 // must be located in a sub-folder
 mod other_struct;
 use other_struct::NameTrait;
+use other_struct::*; // allows me to omit 'namespace::struct'
+
+mod other_trait;
+// use other_trait::*;
 
 // Regular Struct
 struct Person {
     age: u8,
     name: String
     // name: &str, // needs lifetime?
+}
+
+// A composed Struct that takes fields from another
+struct PersonComposed {
+    age: u8,
+    name: String,
+    // Composition, not inheritance
+    composed: Accessible,
 }
 
 // Tuple Struct - unnamed fields
@@ -64,6 +76,14 @@ impl NameTrait for Person {
 }
 
 
+// ERROR: This would not work bc trait AND type are external
+impl other_trait::BoolTrait for other_struct::Accessible {
+    fn am_i_right(&self) -> bool {
+       true
+    }
+}
+
+
 
 #[allow(unused_variables)] 
 pub fn run() {
@@ -78,6 +98,16 @@ pub fn run() {
     let mut p = Person {
         age: 18,
         name: "Jane".to_string()
+    };
+
+    // composed Struct instantiation
+    let p_composed = PersonComposed {
+        age: 18,
+        name: "Jane".to_string(),
+        composed: Accessible {
+            a_bool: true,
+            b_int: 1,
+        }
     };
 
     // cloning variables with the .. notation
