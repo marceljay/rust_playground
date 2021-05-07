@@ -27,6 +27,10 @@ struct PersonComposed {
 // Tuple Struct - unnamed fields
 struct Numbers(u8, u16, usize);
 
+// A unit struct
+struct Unit;
+
+
 // impl keyword is primarily used to define implementations on types
 // e.g. Methods, member functions of a Struct
 // According to Rust book:

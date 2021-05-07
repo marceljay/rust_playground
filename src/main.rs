@@ -2,6 +2,10 @@
 
 use std::io; // not in the prelude
 
+// Modules section
+// Example: 
+// rust will expect to find either a my_module.rs file, or a my_module/mod.rs
+mod my_module;
 mod structs;
 mod collections;
 mod strings;
@@ -10,7 +14,7 @@ mod enums;
 mod lifetimes;
 mod generics;
 mod macros;
-
+mod proc_macro;
 
 // non-sensical function that returns two values. 
 // string slice and usize needed because lenght unknown?
@@ -33,6 +37,7 @@ fn main() {
     lifetimes::run();
     generics::run();
     macros::run();
+    proc_macro::run();
 
     // let mut num = 5;
     // let r1 = &num as *const i32;

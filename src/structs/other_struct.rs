@@ -1,5 +1,5 @@
 // struct must be pub AND fields must be pub too
-#[derive(Debug)] // proc - derive macro
+#[derive(Debug, Clone)] // proc - derive macro
 pub struct Accessible {
     pub a_bool: bool,
     pub b_int: u16,

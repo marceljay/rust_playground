@@ -1,6 +1,4 @@
 #![allow(unused_macros)] 
-use proc_macro;
-
 // Macros
 // Metaprogramming: macros are a way of writing code that writes other code
 // can be used for variadic functions (like println!())
