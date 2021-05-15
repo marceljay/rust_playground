@@ -65,19 +65,6 @@ pub fn run() {
     inspect(numba);
 
 
-    let some_number = Option2::Some(5);
-    let some_string = Option2::Some("a string");
-    
-    // ERROR: Because generic enum variant could be dependent
-    // Rust compiler would not know what type the var would be, cannot infer
-    // let absent_number = Option2::JustNothing;
-
-    let optional_float = Some(1.337f32);
-
-    // Unwrapping a `Some` variant will extract the value wrapped.
-    println!("{:?} unwraps to {:?}", optional_float, optional_float.unwrap());
-
-
     // --- IP Address Example ---
 
     // IpAddrKind tells us the kind, we can combine it with a struct to have data too
@@ -127,19 +114,4 @@ pub fn run() {
 }
 
 
-
-// Everywhere a value has a type that isn’t an Option<T>, 
-// you can safely assume that the value isn’t null. 
-// This was a deliberate design decision for Rust to limit null’s pervasiveness  
-// increase the safety of Rust code.
-
-enum Option<T> {
-    Some(T),
-    None,
-}
-
-enum Option2<T> {
-    Some(T),
-    JustNothing,
-}
 

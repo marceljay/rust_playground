@@ -44,7 +44,6 @@ pub fn run() {
 }
 
 
-
 enum Option2<T> {
     Some(T),
     JustNothing,
