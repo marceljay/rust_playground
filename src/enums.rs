@@ -8,6 +8,7 @@
 enum EmptyEnum { }
 
 // An enum containing different variants
+// variants of the enum are namespaced under its identifier
 enum WebEvent {
     // Basic variants (are like exist vs. non-exist, on/off)
     PageLoad,
@@ -44,7 +45,7 @@ fn inspect(event: WebEvent) {
 }
 
 pub fn run() {
-    println!("module enums: run() called \n---------");
+    println!("\nmodule enums: run() called \n---------");
 
     // variants of the enums are namespaced via ::
     let pressed = WebEvent::KeyPress('x');
@@ -66,32 +67,79 @@ pub fn run() {
 
     let some_number = Option2::Some(5);
     let some_string = Option2::Some("a string");
-    // ERROR: Because Enum variant could be dependent
+    
+    // ERROR: Because generic enum variant could be dependent
+    // Rust compiler would not know what type the var would be, cannot infer
     // let absent_number = Option2::JustNothing;
 
+    let optional_float = Some(1.337f32);
+
+    // Unwrapping a `Some` variant will extract the value wrapped.
+    println!("{:?} unwraps to {:?}", optional_float, optional_float.unwrap());
+
+
+    // --- IP Address Example ---
+
+    // IpAddrKind tells us the kind, we can combine it with a struct to have data too
+    // I assume this must be more memory efficient that using a string
+    // and more readable than e.g. a boolean array or bitset
+    #[derive(Debug)]
+    enum IpAddrKind {
+        V4,
+        V6,
+    }
+
+    #[derive(Debug)]
+    struct IpAddr {
+        kind: IpAddrKind,
+        address: String,
+    }
+
+    let home = IpAddr {
+        kind: IpAddrKind::V4,
+        address: String::from("127.0.0.1"),
+    };
+
+    println!("{:?}", home);
+
+    // An even more efficient way of storing the data attached to the enum
+    #[derive(Debug)]
+    enum IpAddr2 {
+        V4(u8, u8, u8, u8),
+        V6(String),
+    }
+
+    let home = IpAddr2::V4(127, 0, 0, 1);
+    let loopback = IpAddr2::V6(String::from("::1"));
+
+    println!("{:?}, {:?}", home, loopback);
+
+
+
+    fn route(ip_kind: IpAddrKind) {
+        println!("Called route({:?})", ip_kind);
+    }
+
+    // Calling a function with identfier::variant
+    // passing an expression directly
+    route(IpAddrKind::V4);
+    
 }
 
-// An example from the Rust book. 
-// IpAddrKind tells us the kind, we can combine it with a struct to have data too
-// I assume this must be more memory efficient that using a string
-// and more readable than e.g. a boolean array or bitset
-enum IpAddrKind {
-    V4,
-    V6,
-}
-
-struct IpAddr {
-    kind: IpAddrKind,
-    address: String,
-}
 
 
-// Everywhere that a value has a type that isn’t an Option<T>, 
+// Everywhere a value has a type that isn’t an Option<T>, 
 // you can safely assume that the value isn’t null. 
 // This was a deliberate design decision for Rust to limit null’s pervasiveness  
 // increase the safety of Rust code.
+
+enum Option<T> {
+    Some(T),
+    None,
+}
 
 enum Option2<T> {
     Some(T),
     JustNothing,
 }
+

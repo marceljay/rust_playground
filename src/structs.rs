@@ -7,7 +7,7 @@ use other_struct::NameTrait;
 use other_struct::*; // allows me to omit 'namespace::struct'
 
 mod other_trait;
-// use other_trait::*;
+use other_trait::*; // without use trait is not in scope
 
 // Regular Struct
 struct Person {
@@ -38,7 +38,7 @@ struct Unit;
 impl Person {
 
     // Works with or without ampersand, but without means value is consumed.
-    fn get_age(self) -> u8 {
+    fn get_age(&self) -> u8 {
         self.age
     }
 
@@ -83,11 +83,11 @@ impl NameTrait for Person {
 // Sub-Traits / Trait inheritance
 // Requieres that implementing type needs to implement super-trait as well 
 trait SubTrait: other_trait::SuperTrait {
-    fn summarize(&self) -> String;
+    fn summarize_2(&self) -> String;
 }
 
 impl SubTrait for Person {
-    fn summarize(&self) -> String {
+    fn summarize_2(&self) -> String {
         format!("Summary:\n name: {}, age: {}", self.name, self.age)
     }    
 }
@@ -135,9 +135,13 @@ pub fn run() {
     println!("Person {} {}", p.age, p.name);
 
     println!("Getting name: {}", p.get_name());
-    println!(" {}", p.summarize());
+    println!("BasicInfo Trait {}", p.summarize());
     println!(" {}", p.my_name_is());
     println!("Getting age {}", p.get_age());
+
+    println!("Super Trait {}", p.summarize_2());
+    println!("Sub Trait {}", p.am_i_right());
+
 
 
 

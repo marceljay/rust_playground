@@ -7,5 +7,6 @@ struct Pancakes;
 
 
 pub fn run() {
+    println!("\nmodule proc_macros: run() called \n---------");
     Pancakes::hello_macro();
 }

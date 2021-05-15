@@ -16,6 +16,8 @@ mod generics;
 mod macros;
 mod proc_macro;
 mod other;
+mod enum_option;
+
 
 // non-sensical function that returns two values. 
 // string slice and usize needed because lenght unknown?
@@ -34,12 +36,13 @@ fn main() {
     // strings::run();
     // collections::run();
     // ownership::run();
-    // enums::run();
-    lifetimes::run();
-    generics::run();
-    macros::run();
-    proc_macro::run();
-    other::run();
+    enums::run();
+    enum_option::run();
+    // lifetimes::run();
+    // generics::run();
+    // macros::run();
+    // proc_macro::run();
+    // other::run();
    
 
     // let mut num = 5;
