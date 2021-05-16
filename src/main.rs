@@ -17,6 +17,7 @@ mod macros;
 mod proc_macro;
 mod other;
 mod enum_option;
+mod error_handling;
 
 
 // non-sensical function that returns two values. 
@@ -43,6 +44,7 @@ fn main() {
     // macros::run();
     // proc_macro::run();
     // other::run();
+    error_handling::run();
    
 
     // let mut num = 5;

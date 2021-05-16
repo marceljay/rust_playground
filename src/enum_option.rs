@@ -10,7 +10,9 @@
 // Everywhere a value has a type that isn’t an Option<T>, 
 // you can safely assume that the value isn’t null. 
 
-// standard library’s Option<T> enum is already included in the preluade
+// standard library’s Option<T> enum is already included in the prelude
+// (re)Defining it like this, would still be different from the original implementation
+// certain methods like .unwrap() would not be available
 enum Option<T> {
     Some(T),
     None,
@@ -38,10 +40,15 @@ pub fn run() {
     let _equivalent_none = None::<i32>;
 
 
-    let optional_float = Option::Some(1.337f32);
+    let optional_float = Some(1.337f32);
     // Unwrapping a `Some` variant will extract the value wrapped.
     println!("{:?} unwraps to {:?}", optional_float, optional_float.unwrap());
+
+    let optional_float = Some(0f32);
+
+
 }
+
 
 
 enum Option2<T> {

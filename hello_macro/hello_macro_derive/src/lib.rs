@@ -1,13 +1,14 @@
 extern crate proc_macro;  // comes with Rust
 
 use proc_macro::TokenStream;
-// uote crate turns syn data structures back into Rust code
+
+// quote crate turns syn data structures back into Rust code
 use quote::quote;
 // syn crate parses Rust code from a string into a data structure
 use syn;
 
 // LOGIC: 
-// when #[derive(HelloMacro)] is specified on a type 
+// when #[derive(HelloMacroTrait)] is specified on a type 
 // Then hello_macro_derive(..) is called
 // Because: #[proc_macro_derive(HelloMacroTrait)] was annotated
 
