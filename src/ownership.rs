@@ -2,10 +2,6 @@
 #[allow(unused_variables)] 
 
 pub fn run() {
-
-
-    
-
     // Creating a vector with the macro "vec!"
     let v: Vec<u16> = vec![1,2,3,4,5];
     // v.push(1337);

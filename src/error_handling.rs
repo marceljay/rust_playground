@@ -11,16 +11,19 @@ pub fn run() {
     println!("\nmodule error_handling: run() called \n---------");
     // panic!("crash and burn");
 
-    let args: Vec<String> = env::args().collect();
+    let mut args: Vec<String> = env::args().collect();
+    // args[1] = "dsdads".toString()
+    args.push("test".to_string());
     println!("{:?}", args);
 
 
     // Rust only supports indexing of arrays/slices/vec using usize,
-    let arg = args[1].parse::<usize>().unwrap();
-    println!("arg: {:?}", arg);
+    // .unwrap() can “catch” a potential error
+    // let arg = args[1].parse::<usize>().unwrap();
+    // println!("arg: {:?}", arg);
 
-    let v = vec![1, 2, 3];
+    // let v = vec![1, 2, 3];
 
-    println!("lel {}", v[arg]);
+    // println!("Vec {}", v[arg]);
 }
 
